@@ -44,7 +44,7 @@ class MovingCircle extends JComponent{
     public MovingCircle() {
         scale = 1.0;
         setPreferredSize(new Dimension(600, 600));
-        alpha = Math.toRadians(90);
+        alpha = Math.toRadians(45);
     }
 
     @Override
@@ -56,10 +56,10 @@ class MovingCircle extends JComponent{
         g2d.setColor(Color.black);
         g2d.scale(scale, scale);
         x = this.getWidth()/2 + l * Math.sin(alpha*Math.cos(w * time));
-        y = this.getHeight()/2 + l * Math.cos(alpha*Math.cos(w * time));
+        y = this.getHeight()/16 + l * Math.cos(alpha*Math.cos(w * time));
         time += 0.1;
         Ellipse2D el = new Ellipse2D.Double(x, y, 20, 20);
-        Line2D opora = new Line2D.Double(this.getWidth()/2,this.getHeight()/16,this.getWidth()/2+100,this.getHeight()/16);
+        Line2D opora = new Line2D.Double(this.getWidth()/2-50,this.getHeight()/16,this.getWidth()/2+50,this.getHeight()/16);
         g2d.draw(opora);
         g2d.draw(new Line2D.Double(opora.getX1()+(opora.getX2()-opora.getX1())/2,opora.getY1(),el.getCenterX(),el.getCenterY()));
         g2d.fill(el);
